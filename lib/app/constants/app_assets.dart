@@ -5,4 +5,5 @@ class AppAssets {
       'assets/images/sign_up_screen_image.png';
   static const String verifyOtpScreenImage =
       'assets/images/verify_otp_screen_image.png';
+  static const String quotationIconImage = 'assets/images/quotation_image.png';
 }

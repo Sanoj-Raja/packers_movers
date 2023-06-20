@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:packers_movers/app/constants/app_assets.dart';
 import 'package:packers_movers/app/utils/get_screen_size.dart';
 import 'package:packers_movers/app/widgets/gapper.dart';
 import '../../../constants/app_colors.dart';
@@ -40,8 +41,8 @@ class HomeScreen extends StatelessWidget {
           children: [
             Center(
               child: Container(
-                height: AppUtils.getScreenHeight(context) * .18,
-                width: AppUtils.getScreenWidth(context) * .65,
+                height: AppUtils.getScreenHeight(context) * .15,
+                width: AppUtils.getScreenWidth(context) * .75,
                 margin: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: AppColors.primaryBlue,
@@ -158,7 +159,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                       child: const Padding(
-                        padding: EdgeInsets.fromLTRB(8, 0, 8, 0),
+                        padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
                         child: Text(
                           'Renew Now',
                           style: TextStyle(
@@ -173,9 +174,105 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
+            const VerticalGap(gap: 20),
+            Container(
+              width: AppUtils.getScreenWidth(context) * .8,
+              padding: const EdgeInsets.fromLTRB(15, 20, 10, 20),
+              decoration: BoxDecoration(
+                color: AppColors.containerBackgroundWhite,
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text(
+                    'Add Documents',
+                    style: TextStyle(
+                      color: AppColors.darkTextGray,
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  const VerticalGap(gap: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      DocumentSettingsOption(
+                        iconImagePath: AppAssets.quotationIconImage,
+                        settingsOptionName: 'Quotation',
+                      ),
+                      DocumentSettingsOption(
+                        iconImagePath: AppAssets.quotationIconImage,
+                        settingsOptionName: 'Survey List',
+                      ),
+                      DocumentSettingsOption(
+                        iconImagePath: AppAssets.quotationIconImage,
+                        settingsOptionName: 'Packing List',
+                      ),
+                      DocumentSettingsOption(
+                        iconImagePath: AppAssets.quotationIconImage,
+                        settingsOptionName: 'LR-Bility',
+                      ),
+                    ],
+                  ),
+                  const VerticalGap(gap: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: const [
+                      DocumentSettingsOption(
+                        iconImagePath: AppAssets.quotationIconImage,
+                        settingsOptionName: 'Quotation',
+                      ),
+                      DocumentSettingsOption(
+                        iconImagePath: AppAssets.quotationIconImage,
+                        settingsOptionName: 'Survey List',
+                      ),
+                      DocumentSettingsOption(
+                        iconImagePath: AppAssets.quotationIconImage,
+                        settingsOptionName: 'Packing List',
+                      ),
+                      DocumentSettingsOption(
+                        iconImagePath: AppAssets.quotationIconImage,
+                        settingsOptionName: 'LR-Bility',
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class DocumentSettingsOption extends StatelessWidget {
+  final String settingsOptionName, iconImagePath;
+  const DocumentSettingsOption({
+    super.key,
+    required this.settingsOptionName,
+    required this.iconImagePath,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        CircleAvatar(
+          radius: 30,
+          backgroundColor: AppColors.documentSettingsOptionGreyColor,
+          child: Image.asset(iconImagePath),
+        ),
+        const VerticalGap(),
+        Text(
+          settingsOptionName,
+          style: const TextStyle(
+            fontSize: 10,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ],
     );
   }
 }
