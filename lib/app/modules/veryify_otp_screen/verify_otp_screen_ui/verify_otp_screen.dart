@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../../constants/app_assets.dart';
 import '../../../utils/get_screen_size.dart';
 import '../../../widgets/gapper.dart';
@@ -43,72 +44,38 @@ class VerifyOtpScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // const VerticalGap(),
-            // Container(
-            //   decoration: BoxDecoration(
-            //     color: Colors.white,
-            //     boxShadow: [
-            //       BoxShadow(
-            //         color: Colors.grey.withOpacity(0.4),
-            //         spreadRadius: 2.0,
-            //         blurRadius: 8.0,
-            //         offset: const Offset(0, 3), // shadow offset from top-left
-            //       ),
-            //     ],
-            //     borderRadius: BorderRadius.circular(20),
-            //   ),
-            //   width: AppUtils.getScreenWidth(context) * .7,
-            //   child: TextFormField(
-            //     decoration: const InputDecoration(
-            //       border: InputBorder.none,
-            //       contentPadding: EdgeInsets.symmetric(
-            //         horizontal: 10,
-            //         vertical: 8,
-            //       ),
-            //     ),
-            //     keyboardType: TextInputType.number,
-            //   ),
-            // ),
-            // const VerticalGap(),
-            // Align(
-            //   alignment: Alignment.centerLeft,
-            //   child: Container(
-            //     padding: const EdgeInsets.only(left: 50),
-            //     child: Row(
-            //       children: [
-            //         Checkbox(
-            //           value: true,
-            //           onChanged: (value) {},
-            //         ),
-            //         RichText(
-            //           text: TextSpan(
-            //             children: [
-            //               const TextSpan(
-            //                 text: 'I Agree with the ',
-            //                 style: TextStyle(
-            //                   color: Colors.black,
-            //                   fontWeight: FontWeight.w500,
-            //                 ),
-            //               ),
-            //               TextSpan(
-            //                 text: 'Terms and Conditions',
-            //                 style: const TextStyle(
-            //                   color: Colors.blue,
-            //                   decoration: TextDecoration.underline,
-            //                   fontWeight: FontWeight.w500,
-            //                 ),
-            //                 recognizer: TapGestureRecognizer()
-            //                   ..onTap = () {
-            //                     debugPrint('Terms and Conditions clicked');
-            //                   },
-            //               ),
-            //             ],
-            //           ),
-            //         ),
-            //       ],
-            //     ),
-            //   ),
-            // ),
+            const VerticalGap(),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 70),
+              child: PinCodeTextField(
+                appContext: context,
+                length: 4,
+                onChanged: (value) {},
+                pinTheme: PinTheme(
+                  shape: PinCodeFieldShape.box,
+                  borderRadius: BorderRadius.circular(10),
+                  fieldHeight: 50,
+                  fieldWidth: 40,
+                  activeFillColor: Colors.white,
+                  inactiveColor: Colors.white,
+                  inactiveFillColor: Colors.white,
+                  activeColor: Colors.white,
+                  selectedColor: Colors.white,
+                  selectedFillColor: Colors.white,
+                ),
+                cursorColor: Colors.black,
+                animationDuration: const Duration(milliseconds: 300),
+                enableActiveFill: true,
+                keyboardType: TextInputType.number,
+                boxShadows: const [
+                  BoxShadow(
+                    offset: Offset(0, 1),
+                    color: Colors.black12,
+                    blurRadius: 10,
+                  )
+                ],
+              ),
+            ),
             const VerticalGap(),
             TextButton(
               onPressed: () {
