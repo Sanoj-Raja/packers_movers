@@ -76,6 +76,20 @@ class VerifyOtpScreen extends StatelessWidget {
                 ],
               ),
             ),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: EdgeInsets.only(left: 70),
+                child: Text(
+                  'Resend OTP in 2:00',
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ),
+            ),
             const VerticalGap(),
             TextButton(
               onPressed: () {
