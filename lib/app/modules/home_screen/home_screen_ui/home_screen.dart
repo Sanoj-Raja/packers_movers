@@ -39,11 +39,28 @@ class HomeScreen extends StatelessWidget {
         ),
         drawer: const Drawer(),
         bottomNavigationBar: FloatingNavbar(
+          backgroundColor: AppColors.containerBackgroundWhite,
           items: [
-            FloatingNavbarItem(icon: Icons.home, title: 'Home'),
-            FloatingNavbarItem(icon: Icons.explore, title: 'Explore'),
-            FloatingNavbarItem(icon: Icons.chat_bubble_outline, title: 'Chats'),
-            FloatingNavbarItem(icon: Icons.settings, title: 'Settings'),
+            FloatingNavbarItem(
+              customWidget: Image.asset(AppAssets.homeIconImage),
+              title: 'Home',
+            ),
+            FloatingNavbarItem(
+              customWidget: Image.asset(AppAssets.subscriptionIconImage),
+              title: 'Subcription',
+            ),
+            FloatingNavbarItem(
+              customWidget: Image.asset(AppAssets.addBillIconImage),
+              title: 'Add Bills',
+            ),
+            FloatingNavbarItem(
+              customWidget: Image.asset(AppAssets.billDesignIconImage),
+              title: 'Bill Design',
+            ),
+            FloatingNavbarItem(
+              customWidget: Image.asset(AppAssets.settingIconImage),
+              title: 'Settings',
+            ),
           ],
           currentIndex: 0,
           onTap: (int val) {},

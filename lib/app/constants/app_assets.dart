@@ -17,4 +17,9 @@ class AppAssets {
   static const String pbCardIconImage = 'assets/images/pb_card_image.png';
   static const String surveyListIconImage =
       'assets/images/survey_list_image.png';
+  static const String homeIconImage = 'assets/images/home_icon.png';
+  static const String subscriptionIconImage = 'assets/images/subscriptions.png';
+  static const String addBillIconImage = 'assets/images/add_bill.png';
+  static const String billDesignIconImage = 'assets/images/bill_design.png';
+  static const String settingIconImage = 'assets/images/settings.png';
 }
