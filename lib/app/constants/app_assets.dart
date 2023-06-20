@@ -22,4 +22,5 @@ class AppAssets {
   static const String addBillIconImage = 'assets/images/add_bill.png';
   static const String billDesignIconImage = 'assets/images/bill_design.png';
   static const String settingIconImage = 'assets/images/settings.png';
+  static const String carouselIconImage = 'assets/images/carousel_image.png';
 }

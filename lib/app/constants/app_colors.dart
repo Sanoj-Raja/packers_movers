@@ -12,4 +12,5 @@ class AppColors {
   static const backgroundColor = Color(0xFFF5F5F5);
   static const dividerGreyColor = Color(0xFFE1E1E1);
   static const documentSettingsOptionGreyColor = Color(0xFFEEF0FD);
+  static const transparentColor = Colors.transparent;
 }
