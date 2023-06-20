@@ -3,4 +3,6 @@ class AppAssets {
       'assets/images/packers_movers_logo.png';
   static const String signupScreenImage =
       'assets/images/sign_up_screen_image.png';
+  static const String verifyOtpScreenImage =
+      'assets/images/verify_otp_screen_image.png';
 }

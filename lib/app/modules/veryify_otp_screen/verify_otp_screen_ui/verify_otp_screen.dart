@@ -28,7 +28,7 @@ class VerifyOtpScreen extends StatelessWidget {
             Container(
               margin: const EdgeInsets.symmetric(vertical: 25),
               width: AppUtils.getScreenWidth(context) * .55,
-              child: Image.asset(AppAssets.signupScreenImage),
+              child: Image.asset(AppAssets.verifyOtpScreenImage),
             ),
             const Align(
               alignment: Alignment.centerLeft,
