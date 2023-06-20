@@ -123,14 +123,13 @@ class SignUpScreen extends StatelessWidget {
                   );
                 },
                 style: TextButton.styleFrom(
-                  minimumSize: const Size(170, 40),
                   backgroundColor: AppColors.primaryBlue,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
                 ),
                 child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
                     'GET OTP',
                     style: TextStyle(

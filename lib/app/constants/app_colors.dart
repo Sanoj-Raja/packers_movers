@@ -6,5 +6,8 @@ class AppColors {
   static const textBlack = Color(0xFF000000);
   static const termsLinkBlue = Color(0xFF000000);
   static const textOrange = Color(0xFFE87B26);
-  static const shadowColor = Color(0x0f000000);
+  static const shadowColor = Color(0xFF000000);
+  static const containerBackgroundWhite = Color(0xFFFFFFFF);
+  static const backgroundColor = Color(0xFFF5F5F5);
+  static const dividerGreyColor = Color(0xFFE1E1E1);
 }
