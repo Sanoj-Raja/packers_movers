@@ -38,7 +38,7 @@ class SignUpScreen extends StatelessWidget {
                   child: Text(
                     'Mobile No.',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: 12,
                       color: Colors.black,
                       fontWeight: FontWeight.w400,
                     ),

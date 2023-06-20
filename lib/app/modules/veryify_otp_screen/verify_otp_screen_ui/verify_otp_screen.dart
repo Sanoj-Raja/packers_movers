@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import '../../../constants/app_assets.dart';
 import '../../../utils/get_screen_size.dart';
@@ -18,7 +17,7 @@ class VerifyOtpScreen extends StatelessWidget {
               height: AppUtils.getScreenHeight(context) * .15,
             ),
             const Text(
-              'Sign UP',
+              'Verify OTP',
               style: TextStyle(
                 fontSize: 20,
                 color: Colors.grey,
@@ -35,81 +34,81 @@ class VerifyOtpScreen extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.only(left: 70),
                 child: Text(
-                  'Mobile No.',
+                  'Enter OTP',
                   style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.black,
+                    fontSize: 12,
+                    color: Colors.grey,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
             ),
-            const VerticalGap(),
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.4),
-                    spreadRadius: 2.0,
-                    blurRadius: 8.0,
-                    offset: const Offset(0, 3), // shadow offset from top-left
-                  ),
-                ],
-                borderRadius: BorderRadius.circular(20),
-              ),
-              width: AppUtils.getScreenWidth(context) * .7,
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 10,
-                    vertical: 8,
-                  ),
-                ),
-                keyboardType: TextInputType.number,
-              ),
-            ),
-            const VerticalGap(),
-            Align(
-              alignment: Alignment.centerLeft,
-              child: Container(
-                padding: const EdgeInsets.only(left: 50),
-                child: Row(
-                  children: [
-                    Checkbox(
-                      value: true,
-                      onChanged: (value) {},
-                    ),
-                    RichText(
-                      text: TextSpan(
-                        children: [
-                          const TextSpan(
-                            text: 'I Agree with the ',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          TextSpan(
-                            text: 'Terms and Conditions',
-                            style: const TextStyle(
-                              color: Colors.blue,
-                              decoration: TextDecoration.underline,
-                              fontWeight: FontWeight.w500,
-                            ),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () {
-                                debugPrint('Terms and Conditions clicked');
-                              },
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // const VerticalGap(),
+            // Container(
+            //   decoration: BoxDecoration(
+            //     color: Colors.white,
+            //     boxShadow: [
+            //       BoxShadow(
+            //         color: Colors.grey.withOpacity(0.4),
+            //         spreadRadius: 2.0,
+            //         blurRadius: 8.0,
+            //         offset: const Offset(0, 3), // shadow offset from top-left
+            //       ),
+            //     ],
+            //     borderRadius: BorderRadius.circular(20),
+            //   ),
+            //   width: AppUtils.getScreenWidth(context) * .7,
+            //   child: TextFormField(
+            //     decoration: const InputDecoration(
+            //       border: InputBorder.none,
+            //       contentPadding: EdgeInsets.symmetric(
+            //         horizontal: 10,
+            //         vertical: 8,
+            //       ),
+            //     ),
+            //     keyboardType: TextInputType.number,
+            //   ),
+            // ),
+            // const VerticalGap(),
+            // Align(
+            //   alignment: Alignment.centerLeft,
+            //   child: Container(
+            //     padding: const EdgeInsets.only(left: 50),
+            //     child: Row(
+            //       children: [
+            //         Checkbox(
+            //           value: true,
+            //           onChanged: (value) {},
+            //         ),
+            //         RichText(
+            //           text: TextSpan(
+            //             children: [
+            //               const TextSpan(
+            //                 text: 'I Agree with the ',
+            //                 style: TextStyle(
+            //                   color: Colors.black,
+            //                   fontWeight: FontWeight.w500,
+            //                 ),
+            //               ),
+            //               TextSpan(
+            //                 text: 'Terms and Conditions',
+            //                 style: const TextStyle(
+            //                   color: Colors.blue,
+            //                   decoration: TextDecoration.underline,
+            //                   fontWeight: FontWeight.w500,
+            //                 ),
+            //                 recognizer: TapGestureRecognizer()
+            //                   ..onTap = () {
+            //                     debugPrint('Terms and Conditions clicked');
+            //                   },
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
             const VerticalGap(),
             TextButton(
               onPressed: () {
@@ -130,7 +129,7 @@ class VerifyOtpScreen extends StatelessWidget {
               child: const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10),
                 child: Text(
-                  'GET OTP',
+                  'Get Started',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
