@@ -1,3 +1,4 @@
+import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:packers_movers/app/constants/app_assets.dart';
 import 'package:packers_movers/app/utils/get_screen_size.dart';
@@ -37,6 +38,16 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         drawer: const Drawer(),
+        bottomNavigationBar: FloatingNavbar(
+          items: [
+            FloatingNavbarItem(icon: Icons.home, title: 'Home'),
+            FloatingNavbarItem(icon: Icons.explore, title: 'Explore'),
+            FloatingNavbarItem(icon: Icons.chat_bubble_outline, title: 'Chats'),
+            FloatingNavbarItem(icon: Icons.settings, title: 'Settings'),
+          ],
+          currentIndex: 0,
+          onTap: (int val) {},
+        ),
         body: Column(
           children: [
             Center(
@@ -177,7 +188,7 @@ class HomeScreen extends StatelessWidget {
             const VerticalGap(gap: 20),
             Container(
               width: AppUtils.getScreenWidth(context) * .8,
-              padding: const EdgeInsets.fromLTRB(15, 20, 10, 20),
+              padding: const EdgeInsets.fromLTRB(15, 20, 10, 30),
               decoration: BoxDecoration(
                 color: AppColors.containerBackgroundWhite,
                 borderRadius: BorderRadius.circular(20),
@@ -193,7 +204,7 @@ class HomeScreen extends StatelessWidget {
                       fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const VerticalGap(gap: 20),
+                  const VerticalGap(gap: 26),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: const [
@@ -202,15 +213,15 @@ class HomeScreen extends StatelessWidget {
                         settingsOptionName: 'Quotation',
                       ),
                       DocumentSettingsOption(
-                        iconImagePath: AppAssets.quotationIconImage,
+                        iconImagePath: AppAssets.surveyListIconImage,
                         settingsOptionName: 'Survey List',
                       ),
                       DocumentSettingsOption(
-                        iconImagePath: AppAssets.quotationIconImage,
+                        iconImagePath: AppAssets.packingListIconImage,
                         settingsOptionName: 'Packing List',
                       ),
                       DocumentSettingsOption(
-                        iconImagePath: AppAssets.quotationIconImage,
+                        iconImagePath: AppAssets.lrBilityImage,
                         settingsOptionName: 'LR-Bility',
                       ),
                     ],
@@ -220,20 +231,20 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: const [
                       DocumentSettingsOption(
-                        iconImagePath: AppAssets.quotationIconImage,
-                        settingsOptionName: 'Quotation',
+                        iconImagePath: AppAssets.billIconImage,
+                        settingsOptionName: 'Bill',
                       ),
                       DocumentSettingsOption(
-                        iconImagePath: AppAssets.quotationIconImage,
-                        settingsOptionName: 'Survey List',
+                        iconImagePath: AppAssets.carConditionIconImage,
+                        settingsOptionName: 'Car Condition',
                       ),
                       DocumentSettingsOption(
-                        iconImagePath: AppAssets.quotationIconImage,
-                        settingsOptionName: 'Packing List',
+                        iconImagePath: AppAssets.pbCardIconImage,
+                        settingsOptionName: 'PB Card',
                       ),
                       DocumentSettingsOption(
-                        iconImagePath: AppAssets.quotationIconImage,
-                        settingsOptionName: 'LR-Bility',
+                        iconImagePath: AppAssets.moneyReciptIconImage,
+                        settingsOptionName: 'Money Recipt',
                       ),
                     ],
                   )

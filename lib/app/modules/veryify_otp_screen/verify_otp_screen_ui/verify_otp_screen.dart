@@ -117,7 +117,7 @@ class VerifyOtpScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: AppUtils.getScreenHeight(context) * .2,
+              height: AppUtils.getScreenHeight(context) * .26,
             ),
             const Text(
               'Need Any Help',
