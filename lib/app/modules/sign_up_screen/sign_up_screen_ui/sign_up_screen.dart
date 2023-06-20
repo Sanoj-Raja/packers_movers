@@ -5,6 +5,8 @@ import 'package:packers_movers/app/modules/veryify_otp_screen/verify_otp_screen_
 import 'package:packers_movers/app/utils/get_screen_size.dart';
 import 'package:packers_movers/app/widgets/gapper.dart';
 
+import '../../../constants/app_colors.dart';
+
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
@@ -51,8 +53,7 @@ class SignUpScreen extends StatelessWidget {
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.4),
-                      spreadRadius: 2.0,
+                      color: AppColors.shadowColor.withOpacity(0.25),
                       blurRadius: 8.0,
                       offset: const Offset(0, 3), // shadow offset from top-left
                     ),
@@ -123,7 +124,7 @@ class SignUpScreen extends StatelessWidget {
                 },
                 style: TextButton.styleFrom(
                   minimumSize: const Size(170, 40),
-                  backgroundColor: Colors.blue,
+                  backgroundColor: AppColors.primaryBlue,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20.0),
                   ),
@@ -132,7 +133,10 @@ class SignUpScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Text(
                     'GET OTP',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
               ),

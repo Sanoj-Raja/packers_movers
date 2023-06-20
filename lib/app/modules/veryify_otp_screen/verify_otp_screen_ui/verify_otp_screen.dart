@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:packers_movers/app/constants/app_colors.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import '../../../constants/app_assets.dart';
 import '../../../utils/get_screen_size.dart';
@@ -54,8 +55,8 @@ class VerifyOtpScreen extends StatelessWidget {
                 pinTheme: PinTheme(
                   shape: PinCodeFieldShape.box,
                   borderRadius: BorderRadius.circular(10),
-                  fieldHeight: 50,
-                  fieldWidth: 40,
+                  fieldHeight: 55,
+                  fieldWidth: 55,
                   activeFillColor: Colors.white,
                   inactiveColor: Colors.white,
                   inactiveFillColor: Colors.white,
@@ -67,11 +68,11 @@ class VerifyOtpScreen extends StatelessWidget {
                 animationDuration: const Duration(milliseconds: 300),
                 enableActiveFill: true,
                 keyboardType: TextInputType.number,
-                boxShadows: const [
+                boxShadows: [
                   BoxShadow(
-                    offset: Offset(0, 1),
-                    color: Colors.black12,
-                    blurRadius: 10,
+                    offset: const Offset(0, 1),
+                    color: AppColors.shadowColor.withOpacity(0.25),
+                    blurRadius: 5,
                   )
                 ],
               ),
@@ -102,7 +103,7 @@ class VerifyOtpScreen extends StatelessWidget {
               },
               style: TextButton.styleFrom(
                 minimumSize: const Size(170, 40),
-                backgroundColor: Colors.blue,
+                backgroundColor: AppColors.primaryBlue,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0),
                 ),
