@@ -1,11 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:packers_movers/app/constants/app_assets.dart';
-import 'package:packers_movers/app/modules/veryify_otp_screen/verify_otp_screen_ui/verify_otp_screen.dart';
+import 'package:packers_movers/app/modules/veryify_otp_screen/verify_otp_screen.dart';
 import 'package:packers_movers/app/utils/get_screen_size.dart';
 import 'package:packers_movers/app/widgets/gapper.dart';
 
-import '../../../constants/app_colors.dart';
+import '../../constants/app_colors.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);

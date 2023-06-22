@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:packers_movers/app/constants/app_colors.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import '../../../constants/app_assets.dart';
-import '../../../utils/get_screen_size.dart';
-import '../../../widgets/gapper.dart';
-import '../../home_screen/home_screen_ui/home_screen.dart';
+import '../../constants/app_assets.dart';
+import '../../utils/get_screen_size.dart';
+import '../../widgets/gapper.dart';
+import '../home_screen/home_screen_ui/home_screen.dart';
 
 class VerifyOtpScreen extends StatelessWidget {
   const VerifyOtpScreen({super.key});
