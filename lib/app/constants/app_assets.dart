@@ -23,4 +23,16 @@ class AppAssets {
   static const String billDesignIconImage = 'assets/images/bill_design.png';
   static const String settingIconImage = 'assets/images/settings.png';
   static const String carouselIconImage = 'assets/images/carousel_image.png';
+  static const String transportIconImage =
+      'assets/images/transport_icon_image.png';
+  static const String calendarIconImage =
+      'assets/images/calendar_icon_image.png';
+
+  static const String profileIconImage = 'assets/images/profile_icon_image.png';
+  static const String rupeeSymbolIconImage =
+      'assets/images/rupee_symbol_icon_-image.png';
+  static const String callIconImage = 'assets/images/call_icon_image.png';
+  static const String pdfIconImage = 'assets/images/pdf_icon_image.png';
+  static const String moreOptionIconImage =
+      'assets/images/more_option_icon_image.png';
 }

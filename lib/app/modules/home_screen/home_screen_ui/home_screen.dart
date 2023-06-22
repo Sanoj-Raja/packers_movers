@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:packers_movers/app/constants/app_assets.dart';
+import 'package:packers_movers/app/modules/quotation_screen/quotation_screen_ui/quotation_screen_ui.dart';
 import 'package:packers_movers/app/utils/get_screen_size.dart';
 import 'package:packers_movers/app/widgets/gapper.dart';
 import '../../../constants/app_colors.dart';
@@ -69,31 +70,29 @@ class HomeScreen extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                child: CarouselSlider.builder(
-                  itemCount: 3,
-                  itemBuilder: (_, i, k) => Container(
-                    margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
-                    width: AppUtils.getScreenWidth(context) * .76,
-                    decoration: BoxDecoration(
-                      color: AppColors.transparentColor,
-                      borderRadius: BorderRadius.circular(15),
-                      image: const DecorationImage(
-                        image: AssetImage(AppAssets.carouselIconImage),
-                        fit: BoxFit.cover,
-                      ),
+              CarouselSlider.builder(
+                itemCount: 3,
+                itemBuilder: (_, i, k) => Container(
+                  margin: const EdgeInsets.fromLTRB(0, 20, 0, 0),
+                  width: AppUtils.getScreenWidth(context) * .76,
+                  decoration: BoxDecoration(
+                    color: AppColors.transparentColor,
+                    borderRadius: BorderRadius.circular(15),
+                    image: const DecorationImage(
+                      image: AssetImage(AppAssets.carouselIconImage),
+                      fit: BoxFit.cover,
                     ),
                   ),
-                  options: CarouselOptions(
-                    height: AppUtils.getScreenHeight(context) * .18,
-                    aspectRatio: 2 / 1,
-                    initialPage: 1,
-                    enableInfiniteScroll: true,
-                    reverse: false,
-                    autoPlayCurve: Curves.fastOutSlowIn,
-                    enlargeCenterPage: false,
-                    scrollDirection: Axis.horizontal,
-                  ),
+                ),
+                options: CarouselOptions(
+                  height: AppUtils.getScreenHeight(context) * .18,
+                  aspectRatio: 2 / 1,
+                  initialPage: 1,
+                  enableInfiniteScroll: true,
+                  reverse: false,
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enlargeCenterPage: false,
+                  scrollDirection: Axis.horizontal,
                 ),
               ),
               const VerticalGap(),
@@ -212,7 +211,14 @@ class HomeScreen extends StatelessWidget {
                     const VerticalGap(),
                     Center(
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const QuotationScreen(),
+                            ),
+                          );
+                        },
                         style: TextButton.styleFrom(
                           backgroundColor: AppColors.primaryBlue,
                           shape: RoundedRectangleBorder(

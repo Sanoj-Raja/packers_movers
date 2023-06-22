@@ -4,6 +4,7 @@ class AppColors {
   static const primaryBlue = Color(0xFF047ED1);
   static const primaryTextGray = Color(0xFF808080);
   static const darkTextGray = Color(0xFF5F5F5F);
+  static const quotationContainerGray = Color(0xFFD9DCE5);
   static const textBlack = Color(0xFF000000);
   static const termsLinkBlue = Color(0xFF000000);
   static const textOrange = Color(0xFFE87B26);
@@ -13,4 +14,6 @@ class AppColors {
   static const dividerGreyColor = Color(0xFFE1E1E1);
   static const documentSettingsOptionGreyColor = Color(0xFFEEF0FD);
   static const transparentColor = Colors.transparent;
+
+  
 }
