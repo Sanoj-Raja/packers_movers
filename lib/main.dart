@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'app/models/quotation_model.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'app/modules/sign_up_screen/sign_up_screen.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(QuotationModelAdapter());
   runApp(const MyApp());
 }
 
