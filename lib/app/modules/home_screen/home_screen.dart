@@ -2,10 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:packers_movers/app/constants/app_assets.dart';
-import 'package:packers_movers/app/modules/quotation_screen/quotation_screen_ui/quotation_screen_ui.dart';
+import 'package:packers_movers/app/modules/quotation_screen/quotation_screen_ui.dart';
 import 'package:packers_movers/app/utils/get_screen_size.dart';
 import 'package:packers_movers/app/widgets/gapper.dart';
-import '../../../constants/app_colors.dart';
+import '../../constants/app_colors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

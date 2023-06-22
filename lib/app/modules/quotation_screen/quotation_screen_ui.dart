@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:packers_movers/app/utils/get_screen_size.dart';
 import 'package:packers_movers/app/widgets/gapper.dart';
 
-import '../../../constants/app_assets.dart';
-import '../../../constants/app_colors.dart';
+import '../../constants/app_assets.dart';
+import '../../constants/app_colors.dart';
 
 class QuotationScreen extends StatelessWidget {
   const QuotationScreen({super.key});
