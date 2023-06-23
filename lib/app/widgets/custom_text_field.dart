@@ -7,11 +7,13 @@ class CustomTextField extends StatelessWidget {
     this.controller,
     required this.validator,
     required this.keyboardType,
+    this.hintText,
   });
 
   final TextEditingController? controller;
   final String? Function(String?) validator;
   final TextInputType keyboardType;
+  final String? hintText;
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,7 @@ class CustomTextField extends StatelessWidget {
       keyboardType: keyboardType,
       cursorColor: AppColors.dividerGreyColor,
       decoration: InputDecoration(
+        hintText: hintText,
         filled: true,
         fillColor: Colors.white,
         border: OutlineInputBorder(
