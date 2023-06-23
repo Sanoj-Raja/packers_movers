@@ -1,10 +1,14 @@
+// ignore_for_file: use_build_context_synchronously
+import 'package:hive/hive.dart';
 import '../home/home_screen.dart';
 import '../../widgets/gapper.dart';
 import 'package:flutter/material.dart';
 import '../../constants/app_assets.dart';
 import '../../constants/app_colors.dart';
 import '../../utils/get_screen_size.dart';
+import '../../models/quotation_model.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class VerifyOtpScreen extends StatelessWidget {
   VerifyOtpScreen({super.key});
@@ -102,8 +106,12 @@ class VerifyOtpScreen extends StatelessWidget {
             ),
             const VerticalGap(),
             TextButton(
-              onPressed: () {
+              onPressed: () async {
                 if (otpFormKey.currentState!.validate()) {
+                  final storage = await SharedPreferences.getInstance();
+                  storage.setBool('isLogedIn', true);
+                  await Hive.openBox<QuotationModel>('quotations');
+
                   Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(

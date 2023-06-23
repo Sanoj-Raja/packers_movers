@@ -1,11 +1,14 @@
+// ignore_for_file: use_build_context_synchronously
 import 'bloc/home_bloc.dart';
 import 'package:hive/hive.dart';
 import 'components/home_body.dart';
 import 'package:flutter/material.dart';
+import '../sign_up/sign_up_screen.dart';
 import '../../constants/app_colors.dart';
 import '../../constants/app_assets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../add_quotation/add_quotation_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -87,7 +90,35 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            drawer: const Drawer(),
+            drawer: Drawer(
+              child: ListTile(
+                leading: const Icon(Icons.logout),
+                title: const Text(
+                  'Logout',
+                ),
+                trailing: const Icon(
+                  Icons.arrow_forward_ios_sharp,
+                  size: 15,
+                ),
+                onTap: () async {
+                  final storage = await SharedPreferences.getInstance();
+
+                  await storage.clear();
+
+                  await Hive.deleteBoxFromDisk('quotations');
+
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => SignUpScreen(),
+                    ),
+                    (route) {
+                      return false;
+                    },
+                  );
+                },
+              ),
+            ),
             bottomNavigationBar: Padding(
               padding: const EdgeInsets.symmetric(
                 horizontal: 25,
