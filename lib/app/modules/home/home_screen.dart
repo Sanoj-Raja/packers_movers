@@ -64,94 +64,104 @@ class _HomeScreenState extends State<HomeScreen> {
       bloc: homeBloc,
       builder: (context, state) {
         return SafeArea(
-          child: Scaffold(
-            extendBody: true,
-            backgroundColor: AppColors.backgroundColor,
-            appBar: AppBar(
-              centerTitle: true,
-              backgroundColor: AppColors.primaryBlue,
-              title: const Text(
-                'Nice Packers & Movers',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              actions: [
-                IconButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: () {},
-                  icon: const Icon(Icons.notifications),
-                ),
-                IconButton(
-                  padding: EdgeInsets.zero,
-                  onPressed: () {},
-                  icon: const Icon(Icons.person),
-                ),
-              ],
-            ),
-            drawer: Drawer(
-              child: ListTile(
-                leading: const Icon(Icons.logout),
+          child: WillPopScope(
+            onWillPop: () async {
+              if (state.tabIndex == 0) {
+                return true;
+              } else {
+                homeBloc.changeIndex(0);
+                return false;
+              }
+            },
+            child: Scaffold(
+              extendBody: true,
+              backgroundColor: AppColors.backgroundColor,
+              appBar: AppBar(
+                centerTitle: true,
+                backgroundColor: AppColors.primaryBlue,
                 title: const Text(
-                  'Logout',
+                  'Nice Packers & Movers',
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-                trailing: const Icon(
-                  Icons.arrow_forward_ios_sharp,
-                  size: 15,
-                ),
-                onTap: () async {
-                  final storage = await SharedPreferences.getInstance();
-
-                  await storage.clear();
-
-                  await Hive.deleteBoxFromDisk('quotations');
-
-                  Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => SignUpScreen(),
-                    ),
-                    (route) {
-                      return false;
-                    },
-                  );
-                },
+                actions: [
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {},
+                    icon: const Icon(Icons.notifications),
+                  ),
+                  IconButton(
+                    padding: EdgeInsets.zero,
+                    onPressed: () {},
+                    icon: const Icon(Icons.person),
+                  ),
+                ],
               ),
+              drawer: Drawer(
+                child: ListTile(
+                  leading: const Icon(Icons.logout),
+                  title: const Text(
+                    'Logout',
+                  ),
+                  trailing: const Icon(
+                    Icons.arrow_forward_ios_sharp,
+                    size: 15,
+                  ),
+                  onTap: () async {
+                    final storage = await SharedPreferences.getInstance();
+
+                    await storage.clear();
+
+                    await Hive.deleteBoxFromDisk('quotations');
+
+                    Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SignUpScreen(),
+                      ),
+                      (route) {
+                        return false;
+                      },
+                    );
+                  },
+                ),
+              ),
+              bottomNavigationBar: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 25,
+                  vertical: 20,
+                ),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(15),
+                    ),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(15),
+                    ),
+                    child: BottomNavigationBar(
+                      unselectedItemColor: AppColors.textBlack,
+                      selectedItemColor: AppColors.primaryBlue,
+                      items: bottomNavbarItems,
+                      currentIndex: state.tabIndex,
+                      onTap: homeBloc.changeIndex,
+                      showUnselectedLabels: true,
+                      unselectedLabelStyle: const TextStyle(
+                        fontSize: 10,
+                      ),
+                      selectedLabelStyle: const TextStyle(
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              body: bottomNavbarScreens[state.tabIndex],
             ),
-            bottomNavigationBar: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 25,
-                vertical: 20,
-              ),
-              child: Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(15),
-                  ),
-                ),
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(15),
-                  ),
-                  child: BottomNavigationBar(
-                    unselectedItemColor: AppColors.textBlack,
-                    selectedItemColor: AppColors.primaryBlue,
-                    items: bottomNavbarItems,
-                    currentIndex: state.tabIndex,
-                    onTap: homeBloc.changeIndex,
-                    showUnselectedLabels: true,
-                    unselectedLabelStyle: const TextStyle(
-                      fontSize: 10,
-                    ),
-                    selectedLabelStyle: const TextStyle(
-                      fontSize: 12,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            body: bottomNavbarScreens[state.tabIndex],
           ),
         );
       },
