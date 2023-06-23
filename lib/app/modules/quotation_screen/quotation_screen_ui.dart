@@ -1,12 +1,33 @@
+import 'package:intl/intl.dart';
+import '../../widgets/gapper.dart';
 import 'package:flutter/material.dart';
-import 'package:packers_movers/app/utils/get_screen_size.dart';
-import 'package:packers_movers/app/widgets/gapper.dart';
-
 import '../../constants/app_assets.dart';
 import '../../constants/app_colors.dart';
+import '../../utils/get_screen_size.dart';
+import '../../models/quotation_model.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-class QuotationScreen extends StatelessWidget {
+class QuotationScreen extends StatefulWidget {
   const QuotationScreen({super.key});
+
+  @override
+  State<QuotationScreen> createState() => _QuotationScreenState();
+}
+
+class _QuotationScreenState extends State<QuotationScreen> {
+  late Box<QuotationModel> quotationsBox;
+
+  @override
+  void initState() async {
+    quotationsBox = await Hive.openBox<QuotationModel>('quotations');
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    Hive.box('quotations').close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,9 +122,23 @@ class QuotationScreen extends StatelessWidget {
               ),
               const VerticalGap(),
               Expanded(
-                child: ListView.builder(
-                  itemCount: 3,
-                  itemBuilder: (context, index) => const QuotationCard(),
+                child: ValueListenableBuilder<Box<QuotationModel>>(
+                  valueListenable: quotationsBox.listenable(),
+                  builder: (context, box, _) {
+                    final quotations =
+                        box.values.toList().cast<QuotationModel>();
+                    return quotations.isNotEmpty
+                        ? ListView.builder(
+                            shrinkWrap: true,
+                            itemCount: quotations.length,
+                            itemBuilder: (context, index) {
+                              return QuotationCard(
+                                quotation: quotations[index],
+                              );
+                            },
+                          )
+                        : const SizedBox();
+                  },
                 ),
               ),
             ],
@@ -115,15 +150,21 @@ class QuotationScreen extends StatelessWidget {
 }
 
 class QuotationCard extends StatelessWidget {
+  final QuotationModel quotation;
+
   const QuotationCard({
     super.key,
+    required this.quotation,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: AppUtils.getScreenWidth(context) * .85,
-      margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      margin: const EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 15,
+      ),
       decoration: BoxDecoration(
         color: AppColors.containerBackgroundWhite,
         borderRadius: BorderRadius.circular(20),
@@ -144,8 +185,8 @@ class QuotationCard extends StatelessWidget {
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                Text(
+              children: [
+                const Text(
                   '1',
                   style: TextStyle(
                     fontSize: 15,
@@ -154,8 +195,8 @@ class QuotationCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'QUOTATIONS : #52107',
-                  style: TextStyle(
+                  'QUOTATIONS : #${quotation.quotationNumber}',
+                  style: const TextStyle(
                     fontSize: 15,
                     color: AppColors.containerBackgroundWhite,
                     fontWeight: FontWeight.w500,
@@ -177,9 +218,9 @@ class QuotationCard extends StatelessWidget {
                       scale: 1.8,
                     ),
                     const HorizontalGap(gap: 5),
-                    const Text(
-                      'Rajiv kumar',
-                      style: TextStyle(
+                    Text(
+                      quotation.name,
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                         color: AppColors.darkTextGray,
@@ -194,9 +235,9 @@ class QuotationCard extends StatelessWidget {
                       scale: 1.8,
                     ),
                     const HorizontalGap(gap: 5),
-                    const Text(
-                      '21,625.00',
-                      style: TextStyle(
+                    Text(
+                      quotation.quotationPrice.toStringAsFixed(2),
+                      style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w500,
                         color: AppColors.darkTextGray,
@@ -219,8 +260,8 @@ class QuotationCard extends StatelessWidget {
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       'FROM',
                       style: TextStyle(
                         fontSize: 12,
@@ -229,8 +270,8 @@ class QuotationCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'DELHI',
-                      style: TextStyle(
+                      quotation.origin,
+                      style: const TextStyle(
                         fontSize: 19,
                         color: AppColors.darkTextGray,
                         fontWeight: FontWeight.w500,
@@ -249,9 +290,9 @@ class QuotationCard extends StatelessWidget {
                       children: [
                         Image.asset(AppAssets.calendarIconImage),
                         const HorizontalGap(),
-                        const Text(
-                          '24 - 12 - 2022',
-                          style: TextStyle(
+                        Text(
+                          DateFormat('dd-MM-yyyy').format(quotation.date),
+                          style: const TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w500,
                             color: AppColors.darkTextGray,
@@ -263,8 +304,8 @@ class QuotationCard extends StatelessWidget {
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       'TO',
                       style: TextStyle(
                         fontSize: 12,
@@ -273,8 +314,8 @@ class QuotationCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'MUMBAI',
-                      style: TextStyle(
+                      quotation.destination,
+                      style: const TextStyle(
                         fontSize: 19,
                         color: AppColors.darkTextGray,
                         fontWeight: FontWeight.w500,
@@ -304,9 +345,9 @@ class QuotationCard extends StatelessWidget {
                       scale: 1.8,
                     ),
                     const HorizontalGap(gap: 5),
-                    const Text(
-                      '+91 6200716649',
-                      style: TextStyle(
+                    Text(
+                      quotation.phoneNumber,
+                      style: const TextStyle(
                         fontSize: 15,
                         color: AppColors.darkTextGray,
                         fontWeight: FontWeight.w500,
