@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'app/models/quotation_model.dart';
+import 'package:bot_toast/bot_toast.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'app/modules/sign_up/sign_up_screen.dart';
 
@@ -22,6 +23,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      builder: BotToastInit(),
+      navigatorObservers: [
+        BotToastNavigatorObserver(),
+      ],
       home: SignUpScreen(),
     );
   }
