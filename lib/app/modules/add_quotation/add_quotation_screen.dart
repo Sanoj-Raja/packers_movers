@@ -2,6 +2,7 @@ import 'package:hive/hive.dart';
 import '../../widgets/gapper.dart';
 import 'package:flutter/material.dart';
 import '../../constants/app_colors.dart';
+import 'package:bot_toast/bot_toast.dart';
 import '../../models/quotation_model.dart';
 import '../../widgets/custom_text_field.dart';
 
@@ -143,6 +144,10 @@ class _AddQuotationScreenState extends State<AddQuotationScreen> {
                   originTextController.clear();
                   destinationTextController.clear();
                   phoneNumberTextController.clear();
+
+                  BotToast.showText(
+                    text: 'Your quotation has been created successfully.',
+                  );
                 }
               },
               style: TextButton.styleFrom(
