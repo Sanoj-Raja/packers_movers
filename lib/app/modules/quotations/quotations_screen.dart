@@ -109,8 +109,9 @@ class QuotationsScreen extends StatelessWidget {
                           shrinkWrap: true,
                           itemCount: quotations.length,
                           itemBuilder: (context, index) {
+                            final oppositeIndex = quotations.length - 1 - index;
                             return QuotationCard(
-                              quotation: quotations[index],
+                              quotation: quotations[oppositeIndex],
                             );
                           },
                         )
