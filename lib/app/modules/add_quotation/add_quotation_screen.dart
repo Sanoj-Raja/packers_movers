@@ -191,7 +191,7 @@ class _AddQuotationScreenState extends State<AddQuotationScreen> {
                   if (addQuotationBloc.state.pickupDate == null) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: const Text('Pickup Date is Mandatory'),
+                        content: const Text('Pickup Date is Mandatory!'),
                         backgroundColor: (Colors.black12),
                         action: SnackBarAction(
                           label: 'Dismiss',
