@@ -6,8 +6,8 @@ import '../../utils/get_screen_size.dart';
 import '../../models/quotation_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-class QuotationScreen extends StatelessWidget {
-  const QuotationScreen({super.key});
+class QuotationsScreen extends StatelessWidget {
+  const QuotationsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

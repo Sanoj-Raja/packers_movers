@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_colors.dart';
 import '../../../utils/get_screen_size.dart';
-import '../../quotation/quotation_screen.dart';
+import '../../quotations/quotations_screen.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class HomeBody extends StatelessWidget {
@@ -217,7 +217,7 @@ class HomeBody extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const QuotationScreen(),
+                            builder: (context) => const QuotationsScreen(),
                           ),
                         );
                       },
