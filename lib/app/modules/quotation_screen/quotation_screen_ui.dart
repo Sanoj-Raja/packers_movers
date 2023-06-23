@@ -91,9 +91,9 @@ class _QuotationScreenState extends State<QuotationScreen> {
               ),
               const VerticalGap(),
               RichText(
-                text: const TextSpan(
+                text: TextSpan(
                   children: [
-                    TextSpan(
+                    const TextSpan(
                       text: 'TOTAL QUOTATIONS ',
                       style: TextStyle(
                         fontSize: 15,
@@ -101,7 +101,7 @@ class _QuotationScreenState extends State<QuotationScreen> {
                         fontWeight: FontWeight.w500,
                       ),
                     ),
-                    TextSpan(
+                    const TextSpan(
                       text: ':',
                       style: TextStyle(
                         fontSize: 15,
@@ -110,8 +110,8 @@ class _QuotationScreenState extends State<QuotationScreen> {
                       ),
                     ),
                     TextSpan(
-                      text: ' 107',
-                      style: TextStyle(
+                      text: ' ${quotationsBox.values.length}',
+                      style: const TextStyle(
                         color: AppColors.primaryBlue,
                         fontSize: 15,
                         fontWeight: FontWeight.w500,
