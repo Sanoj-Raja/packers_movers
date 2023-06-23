@@ -59,7 +59,9 @@ class SignUpScreen extends StatelessWidget {
                       return (value ?? '').isEmpty
                           ? 'Enter mobile number!'
                           : value!.length == 10
-                              ? null
+                              ? int.tryParse(value) != null
+                                  ? null
+                                  : 'Enter a valid 10 digit mobile number!'
                               : 'Mobile number should only have 10 digits!';
                     },
                   ),
