@@ -20,7 +20,7 @@ class QuotationCard extends StatelessWidget {
       width: AppUtils.getScreenWidth(context) * .85,
       margin: const EdgeInsets.symmetric(
         vertical: 10,
-        horizontal: 15,
+        horizontal: 20,
       ),
       decoration: BoxDecoration(
         color: AppColors.containerBackgroundWhite,
@@ -51,12 +51,17 @@ class QuotationCard extends StatelessWidget {
                     fontWeight: FontWeight.w500,
                   ),
                 ),
-                Text(
-                  'QUOTATIONS : #${quotation.quotationNumber}',
-                  style: const TextStyle(
-                    fontSize: 15,
-                    color: AppColors.containerBackgroundWhite,
-                    fontWeight: FontWeight.w500,
+                const HorizontalGap(gap: 20),
+                Expanded(
+                  child: Text(
+                    'QUOTATIONS : #${quotation.quotationNumber}',
+                    style: const TextStyle(
+                      fontSize: 15,
+                      color: AppColors.containerBackgroundWhite,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.end,
                   ),
                 ),
               ],
@@ -64,43 +69,56 @@ class QuotationCard extends StatelessWidget {
           ),
           const VerticalGap(),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Image.asset(
-                      AppAssets.profileIconImage,
-                      scale: 1.8,
-                    ),
-                    const HorizontalGap(gap: 5),
-                    Text(
-                      quotation.name,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.darkTextGray,
+                Expanded(
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        AppAssets.profileIconImage,
+                        scale: 1.8,
                       ),
-                    ),
-                  ],
+                      const HorizontalGap(gap: 5),
+                      Expanded(
+                        child: Text(
+                          quotation.name,
+                          style: const TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color: AppColors.darkTextGray,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                Row(
-                  children: [
-                    Image.asset(
-                      AppAssets.rupeeSymbolIconImage,
-                      scale: 1.8,
+                const HorizontalGap(gap: 25),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Row(
+                      children: [
+                        Image.asset(
+                          AppAssets.rupeeSymbolIconImage,
+                          scale: 1.8,
+                        ),
+                        const HorizontalGap(gap: 5),
+                        Expanded(
+                          child: Text(
+                            quotation.quotationPrice.toStringAsFixed(2),
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w500,
+                              color: AppColors.darkTextGray,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
                     ),
-                    const HorizontalGap(gap: 5),
-                    Text(
-                      quotation.quotationPrice.toStringAsFixed(2),
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        color: AppColors.darkTextGray,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
               ],
             ),
@@ -111,31 +129,36 @@ class QuotationCard extends StatelessWidget {
             height: 30,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'FROM',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: AppColors.primaryTextGray,
-                        fontWeight: FontWeight.w500,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'FROM',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: AppColors.primaryTextGray,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                    ),
-                    Text(
-                      quotation.origin,
-                      style: const TextStyle(
-                        fontSize: 19,
-                        color: AppColors.darkTextGray,
-                        fontWeight: FontWeight.w500,
+                      Text(
+                        quotation.origin,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          color: AppColors.darkTextGray,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
+                const HorizontalGap(gap: 20),
                 Column(
                   children: [
                     Image.asset(
@@ -159,26 +182,31 @@ class QuotationCard extends StatelessWidget {
                     )
                   ],
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'TO',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: AppColors.primaryTextGray,
-                        fontWeight: FontWeight.w500,
+                const HorizontalGap(gap: 20),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        'TO',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: AppColors.primaryTextGray,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                    ),
-                    Text(
-                      quotation.destination,
-                      style: const TextStyle(
-                        fontSize: 19,
-                        color: AppColors.darkTextGray,
-                        fontWeight: FontWeight.w500,
+                      Text(
+                        quotation.destination,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          color: AppColors.darkTextGray,
+                          fontWeight: FontWeight.w500,
+                        ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
@@ -187,33 +215,37 @@ class QuotationCard extends StatelessWidget {
             thickness: 1.0,
             color: AppColors.dividerGreyColor,
           ),
-          const VerticalGap(),
           Padding(
-            padding: const EdgeInsets.fromLTRB(10, 0, 10, 20),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 15,
+              vertical: 10,
+            ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.asset(
-                      AppAssets.callIconImage,
-                      scale: 1.8,
-                    ),
-                    const HorizontalGap(gap: 5),
-                    Text(
-                      quotation.phoneNumber,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        color: AppColors.darkTextGray,
-                        fontWeight: FontWeight.w500,
+                Expanded(
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        AppAssets.callIconImage,
+                        scale: 1.8,
                       ),
-                    ),
-                  ],
+                      const HorizontalGap(gap: 5),
+                      Expanded(
+                        child: Text(
+                          quotation.phoneNumber,
+                          style: const TextStyle(
+                            fontSize: 15,
+                            color: AppColors.darkTextGray,
+                            fontWeight: FontWeight.w500,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
+                const HorizontalGap(gap: 20),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.asset(
                       AppAssets.pdfIconImage,
@@ -235,7 +267,7 @@ class QuotationCard extends StatelessWidget {
           ),
           Container(
             padding: const EdgeInsets.symmetric(
-              horizontal: 10,
+              horizontal: 15,
               vertical: 10,
             ),
             decoration: const BoxDecoration(
@@ -247,7 +279,6 @@ class QuotationCard extends StatelessWidget {
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
                   'More Options',
