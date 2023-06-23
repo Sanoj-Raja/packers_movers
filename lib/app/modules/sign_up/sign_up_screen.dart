@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../constants/app_assets.dart';
 import '../../constants/app_colors.dart';
 import '../../utils/get_screen_size.dart';
+import '../../widgets/custom_text_field.dart';
 import '../veryify_otp/verify_otp_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -52,35 +53,7 @@ class SignUpScreen extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: Form(
                   key: signupFormKey,
-                  child: TextFormField(
-                    cursorColor: AppColors.dividerGreyColor,
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Colors.white,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        borderSide: const BorderSide(
-                          width: 1.5,
-                          color: AppColors.dividerGreyColor,
-                        ),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        borderSide: const BorderSide(
-                          width: 1.5,
-                          color: AppColors.dividerGreyColor,
-                        ),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(15),
-                        borderSide: const BorderSide(
-                          width: 1.5,
-                          color: AppColors.dividerGreyColor,
-                        ),
-                      ),
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 20),
-                    ),
+                  child: CustomTextField(
                     keyboardType: TextInputType.number,
                     validator: (value) {
                       return (value ?? '').length < 10
@@ -179,7 +152,7 @@ class SignUpScreen extends StatelessWidget {
                   ),
                   HorizontalGap(),
                   Text(
-                    'Call Us At +91',
+                    'Call Us At +91-4234234234',
                     style: TextStyle(
                       fontSize: 12,
                       color: Colors.grey,
