@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:packers_movers/app/constants/app_assets.dart';
+import '../../constants/app_assets.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -8,7 +8,9 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Image.asset(AppAssets.splashScreenLogo),
+        child: Image.asset(
+          AppAssets.splashScreenLogo,
+        ),
       ),
     );
   }

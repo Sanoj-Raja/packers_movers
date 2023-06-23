@@ -1,10 +1,8 @@
-// ignore_for_file: use_key_in_widget_constructors
-
 import 'package:flutter/material.dart';
 
 class VerticalGap extends StatelessWidget {
   final double gap;
-  const VerticalGap({this.gap = 10});
+  const VerticalGap({super.key, this.gap = 10});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +14,7 @@ class VerticalGap extends StatelessWidget {
 
 class HorizontalGap extends StatelessWidget {
   final double gap;
-  const HorizontalGap({this.gap = 10});
+  const HorizontalGap({super.key, this.gap = 10});
 
   @override
   Widget build(BuildContext context) {

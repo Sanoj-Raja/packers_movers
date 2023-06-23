@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:packers_movers/app/constants/app_colors.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
-import '../../constants/app_assets.dart';
-import '../../utils/get_screen_size.dart';
+import '../home/home_screen.dart';
 import '../../widgets/gapper.dart';
-import '../home_screen/home_screen.dart';
+import 'package:flutter/material.dart';
+import '../../constants/app_assets.dart';
+import '../../constants/app_colors.dart';
+import '../../utils/get_screen_size.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
 
 class VerifyOtpScreen extends StatelessWidget {
   VerifyOtpScreen({super.key});
@@ -151,7 +151,7 @@ class VerifyOtpScreen extends StatelessWidget {
                 ),
                 HorizontalGap(),
                 Text(
-                  'Call Us At +91',
+                  'Call Us At +91-2453534535',
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.grey,

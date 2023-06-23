@@ -3,8 +3,8 @@ import '../../../widgets/gapper.dart';
 import 'package:flutter/material.dart';
 import '../../../constants/app_assets.dart';
 import '../../../constants/app_colors.dart';
-import '../../../models/quotation_model.dart';
 import '../../../utils/get_screen_size.dart';
+import '../../../models/quotation_model.dart';
 
 class QuotationCard extends StatelessWidget {
   final QuotationModel quotation;

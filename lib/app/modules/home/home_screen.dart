@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import '../../constants/app_colors.dart';
 import '../../constants/app_assets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../add_quotation_screen/add_quotation_screen.dart';
+import '../add_quotation/add_quotation_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});

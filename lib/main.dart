@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'app/models/quotation_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'app/modules/sign_up_screen/sign_up_screen.dart';
+import 'app/modules/sign_up/sign_up_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
