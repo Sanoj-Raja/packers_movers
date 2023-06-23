@@ -56,9 +56,11 @@ class SignUpScreen extends StatelessWidget {
                   child: CustomTextField(
                     keyboardType: TextInputType.number,
                     validator: (value) {
-                      return (value ?? '').length < 10
-                          ? 'Enter a valid 10 digit mobile number!'
-                          : null;
+                      return (value ?? '').isEmpty
+                          ? 'Enter mobile number!'
+                          : value!.length == 10
+                              ? null
+                              : 'Mobile number should only have 10 digits!';
                     },
                   ),
                 ),
