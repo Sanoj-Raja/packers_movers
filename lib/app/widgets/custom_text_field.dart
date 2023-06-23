@@ -24,6 +24,10 @@ class CustomTextField extends StatelessWidget {
       cursorColor: Colors.black45,
       decoration: InputDecoration(
         hintText: hintText,
+        hintStyle: const TextStyle(
+          fontSize: 15,
+          fontWeight: FontWeight.w300,
+        ),
         filled: true,
         fillColor: Colors.white,
         border: OutlineInputBorder(
