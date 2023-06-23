@@ -8,7 +8,8 @@ import 'package:packers_movers/app/widgets/gapper.dart';
 import '../../constants/app_colors.dart';
 
 class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+  SignUpScreen({Key? key}) : super(key: key);
+  final signupFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -48,28 +49,46 @@ class SignUpScreen extends StatelessWidget {
                 ),
               ),
               const VerticalGap(),
-              Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: AppColors.shadowColor.withOpacity(0.25),
-                      blurRadius: 8.0,
-                      offset: const Offset(0, 3), // shadow offset from top-left
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 50),
+                child: Form(
+                  key: signupFormKey,
+                  child: TextFormField(
+                    cursorColor: AppColors.dividerGreyColor,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: const BorderSide(
+                          width: 1.5,
+                          color: AppColors.dividerGreyColor,
+                        ),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: const BorderSide(
+                          width: 1.5,
+                          color: AppColors.dividerGreyColor,
+                        ),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(15),
+                        borderSide: const BorderSide(
+                          width: 1.5,
+                          color: AppColors.dividerGreyColor,
+                        ),
+                      ),
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 20),
                     ),
-                  ],
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                width: AppUtils.getScreenWidth(context) * .7,
-                child: TextFormField(
-                  decoration: const InputDecoration(
-                    border: InputBorder.none,
-                    contentPadding: EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 8,
-                    ),
+                    keyboardType: TextInputType.number,
+                    validator: (value) {
+                      return (value ?? '').length < 10
+                          ? 'Enter a valid 10 digit mobile number!'
+                          : null;
+                    },
                   ),
-                  keyboardType: TextInputType.number,
                 ),
               ),
               const VerticalGap(),
@@ -97,7 +116,6 @@ class SignUpScreen extends StatelessWidget {
                               text: 'Terms and Conditions',
                               style: const TextStyle(
                                 color: Colors.blue,
-                                decoration: TextDecoration.underline,
                                 fontWeight: FontWeight.w500,
                               ),
                               recognizer: TapGestureRecognizer()
@@ -115,12 +133,14 @@ class SignUpScreen extends StatelessWidget {
               const VerticalGap(),
               TextButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const VerifyOtpScreen(),
-                    ),
-                  );
+                  if (signupFormKey.currentState!.validate()) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => VerifyOtpScreen(),
+                      ),
+                    );
+                  }
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: AppColors.primaryBlue,

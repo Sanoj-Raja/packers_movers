@@ -7,6 +7,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(QuotationModelAdapter());
+
+  await Hive.openBox<QuotationModel>('quotations');
+
   runApp(const MyApp());
 }
 
@@ -21,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const SignUpScreen(),
+      home: SignUpScreen(),
     );
   }
 }
