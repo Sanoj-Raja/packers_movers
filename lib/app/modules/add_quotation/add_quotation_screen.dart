@@ -1,10 +1,15 @@
+// ignore_for_file: use_build_context_synchronously
 import 'package:hive/hive.dart';
+import 'package:intl/intl.dart';
 import '../../widgets/gapper.dart';
+import 'bloc/add_quotation_bloc.dart';
 import 'package:flutter/material.dart';
 import '../../constants/app_colors.dart';
 import 'package:bot_toast/bot_toast.dart';
 import '../../models/quotation_model.dart';
 import '../../widgets/custom_text_field.dart';
+import '../quotations/quotations_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AddQuotationScreen extends StatefulWidget {
   const AddQuotationScreen({super.key});
@@ -22,6 +27,8 @@ class _AddQuotationScreenState extends State<AddQuotationScreen> {
   late TextEditingController originTextController;
   late TextEditingController destinationTextController;
   late TextEditingController phoneNumberTextController;
+
+  final addQuotationBloc = AddQuotationBloc();
 
   @override
   void initState() {
@@ -117,11 +124,81 @@ class _AddQuotationScreenState extends State<AddQuotationScreen> {
                         : 'Mobile number should only have 10 digits!';
               },
             ),
+            const VerticalGap(),
+            BlocBuilder<AddQuotationBloc, AddQuotationState>(
+              bloc: addQuotationBloc,
+              builder: (context, state) {
+                return InkWell(
+                  onTap: () async {
+                    final pickupDate = await showDatePicker(
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime.now(),
+                      lastDate: DateTime.now().add(const Duration(days: 300)),
+                      initialEntryMode: DatePickerEntryMode.calendarOnly,
+                      helpText: "Select Pickup Date".toUpperCase(),
+                      errorInvalidText: "Enter a valid Date!",
+                      errorFormatText: 'Entered Date is not in Valid Format!',
+                      context: context,
+                    );
+
+                    if (pickupDate != null) {
+                      addQuotationBloc.updatePickupDate(
+                        pickupDate: pickupDate,
+                      );
+                    }
+                  },
+                  child: Container(
+                    height: kTextTabBarHeight,
+                    decoration: BoxDecoration(
+                      color: AppColors.containerBackgroundWhite,
+                      borderRadius: BorderRadius.circular(15),
+                      border: Border.all(
+                        width: 1.5,
+                        color: AppColors.dividerGreyColor,
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          state.pickupDate != null
+                              ? DateFormat('dd-MM-yyyy')
+                                  .format(state.pickupDate!)
+                              : 'Select Pickup Date',
+                          style: state.pickupDate != null
+                              ? const TextStyle(
+                                  fontSize: 16,
+                                )
+                              : const TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
             const VerticalGap(gap: 15),
             TextButton(
               onPressed: () async {
                 FocusManager.instance.primaryFocus?.unfocus();
                 if (addQuotationFormKey.currentState!.validate()) {
+                  if (addQuotationBloc.state.pickupDate == null) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: const Text('Pickup Date is Mandatory'),
+                        backgroundColor: (Colors.black12),
+                        action: SnackBarAction(
+                          label: 'Dismiss',
+                          onPressed: () {},
+                        ),
+                      ),
+                    );
+                    return;
+                  }
                   await Hive.box<QuotationModel>('quotations').add(
                     QuotationModel(
                       name: nameTextController.text,
@@ -134,7 +211,7 @@ class _AddQuotationScreenState extends State<AddQuotationScreen> {
                       origin: originTextController.text,
                       destination: destinationTextController.text,
                       phoneNumber: phoneNumberTextController.text,
-                      date: DateTime.now(),
+                      date: addQuotationBloc.state.pickupDate!,
                     ),
                   );
 
@@ -144,9 +221,17 @@ class _AddQuotationScreenState extends State<AddQuotationScreen> {
                   originTextController.clear();
                   destinationTextController.clear();
                   phoneNumberTextController.clear();
+                  addQuotationBloc.updatePickupDate();
 
                   BotToast.showText(
                     text: 'Your quotation has been created successfully.',
+                  );
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const QuotationsScreen(),
+                    ),
                   );
                 }
               },
